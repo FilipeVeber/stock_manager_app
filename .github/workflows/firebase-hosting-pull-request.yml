@@ -10,12 +10,9 @@ jobs:
   build_and_preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Checking out 
-        uses: actions/checkout@v2
-      - name: Building web application
-        run: flutter build web -t lib/main.dart
-      - name: Deploying to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/checkout@v2
+      - run: flutter build web -t lib/main.dart
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_STOCK_MANAGER_WEBAPP }}'
