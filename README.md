@@ -1,3 +1,6 @@
+[![Deploy to Firebase Hosting](https://github.com/FilipeVeber/stock_manager_app/actions/workflows/firebase-hosting-pull-request.yml/badge.svg?branch=master)](https://github.com/FilipeVeber/stock_manager_app/actions/workflows/firebase-hosting-pull-request.yml)
+
+
 # stock_manager_app
 
 A new Flutter project.
