@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stock_manager_app/controllers/wallet_controller.dart';
 import 'package:stock_manager_app/models/wallet.dart';
 
-class WalletPage extends StatelessWidget {
+class WalletPage extends StatefulWidget {
+  @override
+  State<WalletPage> createState() => _WalletPageState();
+}
+
+class _WalletPageState extends State<WalletPage> {
   WalletController walletController = WalletController();
 
   @override
@@ -27,25 +33,67 @@ class WalletPage extends StatelessWidget {
   }
 
   Widget buildDataLayout(Wallet wallet) {
+    final TextEditingController textEditingController = TextEditingController();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Center(
-            child: Padding(
+        Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "Balance ${wallet.balance}",
-            style: const TextStyle(fontSize: 20),
+          child: Row(
+            children: [
+              Text(
+                "Balance ${wallet.balance}",
+                style: const TextStyle(fontSize: 20),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              SizedBox(
+                width: 200,
+                child: TextFormField(
+                  controller: textEditingController,
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                        RegExp(r'^\d+\.?\d{0,2}')),
+                  ],
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Amount',
+                    prefixText: '\$',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an amount';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              ElevatedButton(
+                child: const Text("Add funds"),
+                onPressed: () {
+                  walletController
+                      .addFunds(double.parse(textEditingController.value.text));
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Remove funds"),
+                onPressed: () {
+                  walletController.removeFunds(
+                      double.parse(textEditingController.value.text));
+                },
+              ),
+            ],
           ),
-        )),
+        ),
         Flexible(
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: wallet.stocks.length,
             itemBuilder: (_, int index) {
               var stock = wallet.stocks[index];
-              // return ListTile(title: Text(stock.symbol));
-
               return Card(
                 child: Row(
                   children: [

@@ -8,4 +8,12 @@ class WalletController {
   Future<Wallet> getWallet() async {
     return walletService.getWallet();
   }
+
+  Future addFunds(double amount) async {
+    return walletService.addFunds(amount);
+  }
+
+  Future removeFunds(double amount) async {
+    return walletService.removeFunds(amount);
+  }
 }
