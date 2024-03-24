@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - run: flutter build web -t lib/main.dart 
+      - uses: FirebaseExtended/action-hosting-deploy@master
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_STOCK_MANAGER_WEBAPP }}'
