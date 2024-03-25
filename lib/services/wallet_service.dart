@@ -29,28 +29,19 @@ class WalletService implements IWalletService {
 
   @override
   Future addFunds(double amount) async {
-    final response = await http.put(
+    await http.put(
       Uri.parse('https://web-api.fly.dev/api/wallet/add-funds'),
       body: amount.toString(),
       headers: <String, String>{"Content-Type": "application/json"},
     );
-    if (response.statusCode == 200) {
-      print("Adicionou fundos");
-    } else {
-      print("NÃÃÃÃÃÃO Adicionou fundos");
-    }
   }
 
   @override
   Future removeFunds(double amount) async {
-    final response = await http.put(
+    await http.put(
       Uri.parse('https://web-api.fly.dev/api/wallet/remove-funds'),
       body: amount.toString(),
       headers: <String, String>{"Content-Type": "application/json"},
     );
-    if (response.statusCode == 200) {
-      print("Removeu fundos");
-    } else
-      print("NÃÃÃÃÃÃO Removeu fundos");
   }
 }

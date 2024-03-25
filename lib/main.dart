@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_manager_app/drawer_menu.dart';
-import 'package:stock_manager_app/stock_page.dart';
+import 'package:stock_manager_app/pages/stock_page.dart';
 
 import 'pages/wallet_page.dart';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              title: Text("Wallet"),
+              title: const Text("Wallet"),
             ),
             body: WalletPage(),
             drawer: DrawerMenu(_pageController),
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              title: Text("Stocks"),
+              title: const Text("Stocks"),
             ),
             body: StockPage(),
             drawer: DrawerMenu(_pageController),

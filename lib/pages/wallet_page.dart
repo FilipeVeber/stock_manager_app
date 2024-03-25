@@ -3,12 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:stock_manager_app/controllers/wallet_controller.dart';
 import 'package:stock_manager_app/models/wallet.dart';
 
-class WalletPage extends StatefulWidget {
-  @override
-  State<WalletPage> createState() => _WalletPageState();
-}
-
-class _WalletPageState extends State<WalletPage> {
+class WalletPage extends StatelessWidget {
   WalletController walletController = WalletController();
 
   @override

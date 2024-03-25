@@ -29,32 +29,32 @@ class DrawerMenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var color = _pageController.page!.round() == _page
+        ? Theme.of(context).primaryColor
+        : Colors.grey[700];
+
     return Material(
       color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
-          child: Container(
+          child: SizedBox(
             height: 60,
             child: Row(
               children: <Widget>[
                 Icon(
                   _icon,
                   size: 32,
-                  color: _pageController.page!.round() == _page
-                      ? Theme.of(context).primaryColor
-                      : Colors.grey[700],
+                  color: color,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 32,
                 ),
                 Text(
                   _description,
                   style: TextStyle(
                     fontSize: 16,
-                    color: _pageController.page!.round() == _page
-                        ? Theme.of(context).primaryColor
-                        : Colors.grey[700],
+                    color: color,
                   ),
                 )
               ],
