@@ -29,7 +29,8 @@ class _WalletPageState extends State<WalletPage> {
                 ? buildDataLayout(snapshot.data!)
                 : const Center(child: Text("No data was found"));
           default:
-            return const Center(child: Text("Error. Default clause reached. Try again!"));
+            return const Center(
+                child: Text("Error. Default clause reached. Try again!"));
         }
       },
     );
@@ -78,16 +79,20 @@ class _WalletPageState extends State<WalletPage> {
               ),
               ElevatedButton(
                 child: const Text("Add funds"),
-                onPressed: () {
-                  walletController
+                onPressed: () async {
+                  await walletController
                       .addFunds(double.parse(textEditingController.value.text));
+
+                  setState(() {});
                 },
               ),
               ElevatedButton(
                 child: const Text("Remove funds"),
-                onPressed: () {
-                  walletController.removeFunds(
+                onPressed: () async {
+                  await walletController.removeFunds(
                       double.parse(textEditingController.value.text));
+
+                  setState(() {});
                 },
               ),
             ],
@@ -109,11 +114,13 @@ class _WalletPageState extends State<WalletPage> {
                       Expanded(child: Text("Avg price: ${stock.averagePrice}")),
                       ElevatedButton(
                         child: const Text("Sell"),
-                        onPressed: () {
-                          stockController.sellStock(
+                        onPressed: () async {
+                          await stockController.sellStock(
                               stock.symbol,
                               int.parse(
                                   textEditingControllerQuantity.value.text));
+
+                          setState(() {});
                         },
                       ),
                       const SizedBox(
@@ -138,11 +145,13 @@ class _WalletPageState extends State<WalletPage> {
                       ),
                       ElevatedButton(
                         child: const Text("Buy"),
-                        onPressed: () {
-                          stockController.buyStock(
+                        onPressed: () async {
+                          await stockController.buyStock(
                               stock.symbol,
                               int.parse(
                                   textEditingControllerQuantity.value.text));
+
+                          setState(() {});
                         },
                       ),
                     ],
