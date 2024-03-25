@@ -49,11 +49,7 @@ class _StockPageState extends State<StockPage> {
               )
             ],
           ),
-          searchedStock != null
-              ? buildForm()
-              : Container(
-                  child: const Text("NULL"),
-                )
+          searchedStock != null ? buildForm() : const Text("No data to show")
         ],
       ),
     );

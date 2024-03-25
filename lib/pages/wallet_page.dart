@@ -29,7 +29,7 @@ class _WalletPageState extends State<WalletPage> {
                 ? buildDataLayout(snapshot.data!)
                 : const Center(child: Text("No data was found"));
           default:
-            return const Center(child: Text("Error. Default clause"));
+            return const Center(child: Text("Error. Default clause reached. Try again!"));
         }
       },
     );
@@ -151,51 +151,6 @@ class _WalletPageState extends State<WalletPage> {
               );
             },
           ),
-          // child: GridView.builder(
-          //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          //       crossAxisCount: 10),
-          //   itemCount: wallet.stocks.length,
-          //   itemBuilder: (_, int index) {
-          //     var stock = wallet.stocks[index];
-          //     return Card(
-          //       shape: Border.all(
-          //         color: Colors.deepPurple,
-          //         width: 2,
-          //       ),
-          //       child: Padding(
-          //         padding: const EdgeInsets.all(8.0),
-          //         child: Column(
-          //           children: [
-          //             Text(stock.symbol),
-          //             Text("Quantity: ${stock.quantity}"),
-          //             TextFormField(
-          //               style: const TextStyle(fontSize: 5),
-          //               controller: textEditingControllerQuantity,
-          //               decoration: const InputDecoration(
-          //                 labelText: "Quantity",
-          //               ),
-          //               keyboardType: const TextInputType.numberWithOptions(),
-          //               inputFormatters: [
-          //                 FilteringTextInputFormatter.allow(RegExp(r'^-?\d+')),
-          //               ],
-          //             ),
-          //             Row(
-          //               children: [
-          //                 SizedBox(
-          //                     width: 10,
-          //                     child: ElevatedButton(
-          //                         onPressed: () {},
-          //                         child: const Icon(Icons.add))),
-          //                 ElevatedButton(
-          //                     onPressed: () {}, child: const Text("Sell")),
-          //               ],
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
         )
       ],
     );
