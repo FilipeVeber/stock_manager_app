@@ -49,7 +49,7 @@ class _WalletPageState extends State<WalletPage> {
           child: Row(
             children: [
               Text(
-                "Balance: ${wallet.balance}",
+                "Balance: ${wallet.balance.toStringAsFixed(2)}",
                 style: const TextStyle(fontSize: 20),
               ),
               const SizedBox(
@@ -111,7 +111,7 @@ class _WalletPageState extends State<WalletPage> {
                       const Text(" - "),
                       Text("Quantity: ${stock.quantity}"),
                       const Text(" - "),
-                      Expanded(child: Text("Avg price: ${stock.averagePrice}")),
+                      Expanded(child: Text("Avg price: ${stock.averagePrice.toStringAsFixed(2)}")),
                       ElevatedButton(
                         child: const Text("Sell"),
                         onPressed: () async {
