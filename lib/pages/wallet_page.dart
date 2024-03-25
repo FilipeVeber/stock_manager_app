@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stock_manager_app/controllers/stock_controller.dart';
 import 'package:stock_manager_app/controllers/wallet_controller.dart';
+import 'package:stock_manager_app/models/stock.dart';
 import 'package:stock_manager_app/models/wallet.dart';
 
 class WalletPage extends StatefulWidget {
@@ -38,8 +39,6 @@ class _WalletPageState extends State<WalletPage> {
 
   Widget buildDataLayout(Wallet wallet) {
     final TextEditingController textEditingController = TextEditingController();
-    final TextEditingController textEditingControllerQuantity =
-        TextEditingController();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -103,65 +102,69 @@ class _WalletPageState extends State<WalletPage> {
             itemCount: wallet.stocks.length,
             itemBuilder: (_, int index) {
               var stock = wallet.stocks[index];
-              return Card(
-                child: ListTile(
-                  title: Row(
-                    children: [
-                      Text(stock.symbol),
-                      const Text(" - "),
-                      Text("Quantity: ${stock.quantity}"),
-                      const Text(" - "),
-                      Expanded(child: Text("Avg price: ${stock.averagePrice.toStringAsFixed(2)}")),
-                      ElevatedButton(
-                        child: const Text("Sell"),
-                        onPressed: () async {
-                          await stockController.sellStock(
-                              stock.symbol,
-                              int.parse(
-                                  textEditingControllerQuantity.value.text));
-
-                          setState(() {});
-                        },
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SizedBox(
-                        width: 150,
-                        child: TextFormField(
-                          controller: textEditingControllerQuantity,
-                          decoration: const InputDecoration(
-                            labelText: "Quantity",
-                          ),
-                          keyboardType: const TextInputType.numberWithOptions(),
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                                RegExp(r'^-?\d+')),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      ElevatedButton(
-                        child: const Text("Buy"),
-                        onPressed: () async {
-                          await stockController.buyStock(
-                              stock.symbol,
-                              int.parse(
-                                  textEditingControllerQuantity.value.text));
-
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              );
+              return buildTile(stock);
             },
           ),
         )
       ],
+    );
+  }
+
+  Widget buildTile(Stock stock) {
+    final TextEditingController textEditingControllerQuantity =
+        TextEditingController();
+
+    return Card(
+      child: ListTile(
+        title: Row(
+          children: [
+            Text(stock.symbol),
+            const Text(" - "),
+            Text("Quantity: ${stock.quantity}"),
+            const Text(" - "),
+            Expanded(
+                child: Text(
+                    "Avg price: ${stock.averagePrice.toStringAsFixed(2)}")),
+            ElevatedButton(
+              child: const Text("Sell"),
+              onPressed: () async {
+                await stockController.sellStock(stock.symbol,
+                    int.parse(textEditingControllerQuantity.value.text));
+
+                setState(() {});
+              },
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(
+              width: 150,
+              child: TextFormField(
+                controller: textEditingControllerQuantity,
+                decoration: const InputDecoration(
+                  labelText: "Quantity",
+                ),
+                keyboardType: const TextInputType.numberWithOptions(),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^-?\d+')),
+                ],
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            ElevatedButton(
+              child: const Text("Buy"),
+              onPressed: () async {
+                await stockController.buyStock(stock.symbol,
+                    int.parse(textEditingControllerQuantity.value.text));
+
+                setState(() {});
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
