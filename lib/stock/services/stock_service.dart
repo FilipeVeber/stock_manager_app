@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:stock_manager_app/models/search_stock_output.dart';
+import 'package:stock_manager_app/stock/models/search_stock_output.dart';
 
 abstract class IStockService {
   Future<SearchStockOutput> searchStock(String symbol);

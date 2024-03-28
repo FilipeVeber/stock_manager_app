@@ -1,5 +1,5 @@
-import 'package:stock_manager_app/models/search_stock_output.dart';
-import 'package:stock_manager_app/services/stock_service.dart';
+import 'package:stock_manager_app/stock/models/search_stock_output.dart';
+import 'package:stock_manager_app/stock/services/stock_service.dart';
 
 class StockController {
   StockService stockService = StockService();

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:stock_manager_app/models/wallet.dart';
+import 'package:stock_manager_app/wallet/models/wallet.dart';
 
 abstract class IWalletService {
   Future<Wallet> getWallet();

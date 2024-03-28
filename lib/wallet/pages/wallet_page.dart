@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stock_manager_app/controllers/stock_controller.dart';
-import 'package:stock_manager_app/controllers/wallet_controller.dart';
-import 'package:stock_manager_app/models/stock.dart';
-import 'package:stock_manager_app/models/wallet.dart';
+import 'package:stock_manager_app/stock/controllers/stock_controller.dart';
+import 'package:stock_manager_app/stock/models/stock.dart';
+import 'package:stock_manager_app/wallet/controllers/wallet_controller.dart';
+import 'package:stock_manager_app/wallet/models/wallet.dart';
 
 class WalletPage extends StatefulWidget {
   @override
