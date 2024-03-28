@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_manager_app/drawer_menu.dart';
-import 'package:stock_manager_app/pages/stock_page.dart';
-
-import 'pages/wallet_page.dart';
+import 'package:stock_manager_app/stock/pages/stock_page.dart';
+import 'package:stock_manager_app/wallet/pages/wallet_page.dart';
 
 void main() {
   runApp(MyApp());

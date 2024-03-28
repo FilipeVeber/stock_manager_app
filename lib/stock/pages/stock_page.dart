@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stock_manager_app/controllers/stock_controller.dart';
-import 'package:stock_manager_app/models/search_stock_output.dart';
+import 'package:stock_manager_app/stock/controllers/stock_controller.dart';
+import 'package:stock_manager_app/stock/models/search_stock_output.dart';
 
 class StockPage extends StatefulWidget {
   @override

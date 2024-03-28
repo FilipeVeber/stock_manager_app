@@ -1,4 +1,4 @@
-import 'package:stock_manager_app/models/stock.dart';
+import 'package:stock_manager_app/stock/models/stock.dart';
 
 class Wallet {
   final double balance;

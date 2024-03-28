@@ -1,4 +1,4 @@
-import 'package:stock_manager_app/models/wallet.dart';
+import 'package:stock_manager_app/wallet/models/wallet.dart';
 
 import '../services/wallet_service.dart';
 
